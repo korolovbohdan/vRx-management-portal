@@ -1,30 +1,24 @@
 import {Component} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
-import {Menubar} from 'primeng/menubar';
 import {MenuItem} from 'primeng/api';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Menubar],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App {
   items: MenuItem[] = [
     {
-      label: 'Dashboard',
-      icon: 'pi pi-home',
-      routerLink: 'dashboard'
-    },
-    {
       label: 'Assets',
       icon: 'pi pi-folder',
-      routerLink: 'assets'
+      routerLink: 'asset'
     },
     {
       label: 'Findings',
       icon: 'pi pi-key',
-      routerLink: 'findings'
+      routerLink: 'finding'
     },
     {
       label: 'Users',

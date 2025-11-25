@@ -5,9 +5,10 @@
     "ng": "ng",
     "start": "ng serve shell",
     "build": "ng build",
+    "build:shared": "ng build shared",
     "watch": "ng build --watch --configuration development",
+    "watch:shared ": "ng build shared --watch",
     "test": "ng test",
-    "start:dashboard": "ng serve dashboard",
     "start:assets": "ng serve assets",
     "start:findings": "ng serve findings",
     "start:users": "ng serve users"
