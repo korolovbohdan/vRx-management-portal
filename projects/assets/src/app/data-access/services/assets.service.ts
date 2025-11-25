@@ -1,23 +1,22 @@
-import {Injectable, inject} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {IQueryAsset} from '../common/dto/request.dto';
 import {IAssetDetailResponse, IAssetResponse} from '../common/dto/response.dto';
-import {HttpService} from 'shared';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AssetsService {
-  private readonly http = inject(HttpService);
+  // private readonly http = inject(HttpService);
   private readonly baseUrl = '/assets';
 
   /**
    * Get all asset
    * @returns Observable of asset array
    */
-  getAssets(query: IQueryAsset): Observable<IAssetResponse[]> {
-    return this.http.get<IAssetResponse[]>(this.baseUrl, {params: query});
-  }
+  // getAssets(query: IQueryAsset): Observable<IAssetResponse[]> {
+  //   return this.http.get<IAssetResponse[]>(this.baseUrl, {params: query});
+  // }
 
   /**
    * Get mock assets for testing
@@ -47,8 +46,29 @@ export class AssetsService {
    * @param id Asset ID
    * @returns Observable of asset detail
    */
-  getAssetById(id: string): Observable<IAssetDetailResponse> {
-    return this.http.get<IAssetDetailResponse>(`${this.baseUrl}/${id}`);
+  // getAssetById(id: string): Observable<IAssetDetailResponse> {
+  //   return this.http.get<IAssetDetailResponse>(`${this.baseUrl}/${id}`);
+  // }
+
+  /**
+   * Get mock asset detail by ID for testing
+   * @param id
+   */
+  getAssetByIdMock(id: string): Observable<IAssetDetailResponse> {
+    const mockAssetDetail: IAssetDetailResponse = {
+      id,
+      name: `Asset ${id}`,
+      status: 'active',
+      owner: `Owner ${id}`,
+      vulnerabilities: [
+        {id: 'vuln1', description: 'Vulnerability 1', severity: 'high'},
+        {id: 'vuln2', description: 'Vulnerability 2', severity: 'medium'},
+      ],
+    };
+    return new Observable<IAssetDetailResponse>(observer => {
+      observer.next(mockAssetDetail);
+      observer.complete();
+    });
   }
 }
 

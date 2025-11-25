@@ -13,7 +13,7 @@ export interface HttpOptions {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HttpService {
   private readonly http = inject(HttpClient);

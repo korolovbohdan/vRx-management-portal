@@ -1,1 +1,33 @@
-<p>details works!</p>
+<div class="asset-details-container">
+  <h2>Asset Details</h2>
+  @if (isAssetIdProvided()) {
+    @if (isLoading()) {
+      <p>
+        Loading asset details...
+      </p>
+    } @else {
+      <div class="asset-info">
+        <p><strong>ID:</strong> {{ asset()?.id }}</p>
+        <p><strong>Name:</strong> {{ asset()?.name }}</p>
+        <p><strong>Status:</strong> {{ asset()?.status }}</p>
+        <p><strong>Owner:</strong> {{ asset()?.status }}</p>
+      </div>
+      <div class="asset-vulnerabilities">
+        <h3>Vulnerabilities</h3>
+        <ul>
+          @for (vulnerability of asset()?.vulnerabilities; track $index) {
+            <li>
+              <p><strong>ID:</strong> {{ vulnerability.id }}</p>
+              <p><strong>Description:</strong> {{ vulnerability.description }}</p>
+              <p><strong>Severity:</strong> {{ vulnerability.severity }}</p>
+            </li>
+          }
+        </ul>
+      </div>
+    }
+  } @else {
+    <p>
+      No asset ID provided. Please select an asset to view its details.
+    </p>
+  }
+</div>

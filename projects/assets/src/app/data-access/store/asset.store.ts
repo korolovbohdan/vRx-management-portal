@@ -8,6 +8,7 @@ import {AssetsService} from '../services/assets.service';
 import {rxMethod} from '@ngrx/signals/rxjs-interop';
 import {pipe, switchMap, tap} from 'rxjs';
 import {tapResponse} from '@ngrx/operators';
+import {AssetsMapper} from '../mapper/assets.mapper';
 
 type State = {
   queryParams: IQueryAsset;
@@ -40,7 +41,7 @@ export const AssetStore = signalStore(
                 next: (data) => {
                   patchState(store, {
                     ...setLoaded<string>(),
-                    list: data
+                    list: AssetsMapper.toAssetModelList(data)
                   })
                 },
                 error: (err) => {
@@ -62,13 +63,13 @@ export const AssetStore = signalStore(
           })
         ),
         switchMap((id) => {
-          return assetsService.getAssetById(id)
+          return assetsService.getAssetByIdMock(id)
             .pipe(
               tapResponse({
                 next: (data) => {
                   patchState(store, {
                     ...setLoaded<string>(),
-                    asset: data
+                    asset: AssetsMapper.toAssetDetailModel(data)
                   })
                 },
                 error: (err) => {

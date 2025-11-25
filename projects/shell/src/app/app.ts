@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {MenuItem} from 'primeng/api';
-import {MenubarModule} from 'primeng/menubar';
+import {Menubar, MenubarModule} from 'primeng/menubar';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, Menubar],
   providers: [
     MenubarModule
   ],
@@ -17,12 +17,12 @@ export class App {
     {
       label: 'Assets',
       icon: 'pi pi-folder',
-      routerLink: 'asset'
+      routerLink: 'assets'
     },
     {
       label: 'Findings',
       icon: 'pi pi-key',
-      routerLink: 'finding'
+      routerLink: 'findings'
     },
     {
       label: 'Users',
