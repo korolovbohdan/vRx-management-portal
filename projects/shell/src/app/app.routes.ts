@@ -1,20 +1,19 @@
 import {Routes} from '@angular/router';
-import {loadRemoteModule} from '@angular-architects/native-federation';
+import {safeMfaLoader} from '../../../shared/src/lib/utils/safe-mfa-loader.util';
 
 export const routes: Routes = [
   {
     path: 'assets',
-    loadChildren: () =>
-      loadRemoteModule('assets', './Routes').then((m) => m.routes),
+    loadChildren: () => safeMfaLoader('assets', './Routes').then(m => m.routes)
   },
   {
     path: 'findings',
     loadChildren: () =>
-      loadRemoteModule('findings', './Routes').then((m) => m.routes),
+      safeMfaLoader('findings', './Routes').then(m => m.routes)
   },
   {
     path: 'users',
     loadChildren: () =>
-      loadRemoteModule('users', './Routes').then((m) => m.routes),
+      safeMfaLoader('users', './Routes').then(m => m.routes)
   },
 ];
