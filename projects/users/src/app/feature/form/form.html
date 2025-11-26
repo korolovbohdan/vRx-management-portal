@@ -1,0 +1,62 @@
+<div class="card">
+  <h2>Create New User</h2>
+
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="form-field">
+      <label for="name">Name *</label>
+      <input
+        id="name"
+        type="text"
+        pInputText
+        formControlName="name"
+        placeholder="Enter user name"
+        [class.ng-invalid]="userForm.get('name')?.invalid && userForm.get('name')?.touched"
+      />
+      @if (userForm.get('name')?.invalid && userForm.get('name')?.touched) {
+        <small class="error-text">
+          @if (userForm.get('name')?.errors?.['required']) {
+            Name is required
+          } @else if (userForm.get('name')?.errors?.['minlength']) {
+            Name must be at least 2 characters
+          }
+        </small>
+      }
+    </div>
+
+    <div class="form-field">
+      <label for="role">Role *</label>
+      <select
+        id="role"
+        pInputText
+        formControlName="role"
+        [class.ng-invalid]="userForm.get('role')?.invalid && userForm.get('role')?.touched"
+      >
+        <option value="">Select role</option>
+        @for (role of roles; track role.value) {
+          <option [value]="role.value">{{ role.label }}</option>
+        }
+      </select>
+      @if (userForm.get('role')?.invalid && userForm.get('role')?.touched) {
+        <small class="error-text">Role is required</small>
+      }
+    </div>
+
+    <div class="form-actions">
+      <p-button
+        label="Cancel"
+        icon="pi pi-times"
+        severity="secondary"
+        (onClick)="onCancel()"
+        [disabled]="isSubmitting"
+      />
+      <p-button
+        type="submit"
+        label="Create User"
+        icon="pi pi-check"
+        [disabled]="userForm.invalid || isSubmitting"
+        [loading]="isSubmitting"
+      />
+    </div>
+  </form>
+</div>
+

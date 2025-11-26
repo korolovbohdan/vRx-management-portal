@@ -1,0 +1,40 @@
+.card {
+  padding: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.form-field {
+  margin-bottom: 1.5rem;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-field input,
+.form-field select {
+  width: 100%;
+}
+
+.error-text {
+  display: block;
+  color: var(--p-danger-color);
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+

@@ -1,5 +1,5 @@
 import {Routes} from '@angular/router';
-import {safeMfaLoader} from '../../../shared/src/lib/utils/safe-mfa-loader.util';
+import {safeMfaLoader} from 'shared';
 
 export const routes: Routes = [
   {

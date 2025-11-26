@@ -1,13 +1,14 @@
-import {Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {IQueryAsset} from '../common/dto/request.dto';
 import {IAssetDetailResponse, IAssetResponse} from '../common/dto/response.dto';
+import {HttpService} from 'shared';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AssetsService {
-  // private readonly http = inject(HttpService);
+  private readonly http = inject(HttpService);
   private readonly baseUrl = '/assets';
 
   /**

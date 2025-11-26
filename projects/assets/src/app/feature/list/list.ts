@@ -4,6 +4,7 @@ import {Asset} from '../../data-access/models/asset.model';
 import {AssetStore} from '../../data-access/store/asset.store';
 import {TableModule} from 'primeng/table';
 import {RouterLink} from '@angular/router';
+import {HttpService} from 'shared';
 
 @Component({
   selector: 'app-list',
@@ -14,6 +15,7 @@ import {RouterLink} from '@angular/router';
     RouterLink,
   ],
   providers: [
+    HttpService,
     AssetStore,
     AssetsApplicationService,
   ]

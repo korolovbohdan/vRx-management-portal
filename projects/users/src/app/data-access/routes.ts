@@ -1,12 +1,21 @@
-import { Routes } from '@angular/router';
+import {Routes} from '@angular/router';
 
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: () => import('../app').then(m => m.App)
+    pathMatch: 'full',
+    redirectTo: 'list'
+  },
+  {
+    path: 'list',
+    loadComponent: () => import('../feature/list/list').then(m => m.List)
+  },
+  {
+    path: 'create',
+    loadComponent: () => import('../feature/form/form').then(m => m.Form)
   },
   {
     path: '**',
-    redirectTo: ''
+    redirectTo: 'list'
   }
 ];

@@ -12,9 +12,7 @@ export interface HttpOptions {
   withCredentials?: boolean;
 }
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class HttpService {
   private readonly http = inject(HttpClient);
 
