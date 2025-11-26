@@ -8,16 +8,16 @@ import {IFindingResponse} from '../common/dto/response.dto';
   providedIn: 'root'
 })
 export class FindingsService {
-  private readonly http = inject(HttpService);
+  // private readonly http = inject(HttpService);
   private readonly baseUrl = '/findings';
 
   /**
    * Get all finding
    * @returns Observable of finding array
    */
-  getFindings(query: IQueryFinding): Observable<IFindingResponse[]> {
-    return this.http.get<IFindingResponse[]>(this.baseUrl, {params: query});
-  }
+  // getFindings(query: IQueryFinding): Observable<IFindingResponse[]> {
+  //   return this.http.get<IFindingResponse[]>(this.baseUrl, {params: query});
+  // }
 
   /**
    * Get mock findings for testing
@@ -48,9 +48,9 @@ export class FindingsService {
    * @param status New status (e.g., 'resolved')
    * @returns Observable of updated finding
    */
-  updateFindingStatus(id: string, status: string): Observable<void> {
-    return this.http.patch<void>(`${this.baseUrl}/${id}`, {status});
-  }
+  // updateFindingStatus(id: string, status: string): Observable<void> {
+  //   return this.http.patch<void>(`${this.baseUrl}/${id}`, {status});
+  // }
 
   /**
    * Mock update finding status for testing

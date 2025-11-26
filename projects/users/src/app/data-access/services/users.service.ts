@@ -8,16 +8,16 @@ import {HttpService} from 'shared';
   providedIn: 'root'
 })
 export class UsersService {
-  private readonly http = inject(HttpService);
+  // private readonly http = inject(HttpService);
   private readonly baseUrl = '/users';
 
   /**
    * Get all users
    * @returns Observable of users array
    */
-  getUsers(query: IQueryUser): Observable<IUserResponse[]> {
-    return this.http.get<IUserResponse[]>(this.baseUrl, {params: query});
-  }
+  // getUsers(query: IQueryUser): Observable<IUserResponse[]> {
+  //   return this.http.get<IUserResponse[]>(this.baseUrl, {params: query});
+  // }
 
   getUsersMock(query?: IQueryUser): Observable<IUserResponse[]> {
     const mockUsers: IUserResponse[] = [
@@ -36,9 +36,9 @@ export class UsersService {
    * @param userData User data to create
    * @returns Observable of created user
    */
-  createUser(userData: CreateUserDto): Observable<IUserResponse> {
-    return this.http.post<IUserResponse>(this.baseUrl, userData);
-  }
+  // createUser(userData: CreateUserDto): Observable<IUserResponse> {
+  //   return this.http.post<IUserResponse>(this.baseUrl, userData);
+  // }
 
   /**
    * Create a new user (mock version for testing)
@@ -65,9 +65,9 @@ export class UsersService {
    * @param id User ID
    * @returns Observable of deletion result
    */
-  deleteUser(id: string): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${id}`);
-  }
+  // deleteUser(id: string): Observable<void> {
+  //   return this.http.delete<void>(`${this.baseUrl}/${id}`);
+  // }
 
   /**
    * Delete a user by ID (mock version for testing)
